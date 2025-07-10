@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset ="UTF-8 />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>nav bar</title>
+<style>
+* {
+margin:0;
+padding:0;
+box-resizing:border-box;
+}
+body{
+font-family:Arial,sans-serif;
+background-image: url('riz.jpg'); 
+}
+nav{
+background-color:purple;
+display:flex;
+justify-content: space-between;
+align-items:center;
+padding:10px 20px;
+}
+.logo{
+color:yellow;
+font-size:23px;
+font-weight:bold;
+}
+.menu{
+list-style:none;
+display:flex;
+}
+.menu li{
+margin-left:23px;
+}
+.menu li a{
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+.menu li a:hover{
+color:pink;
+}
+.menu-toggle{
+display:none;
+flex-direction:column;
+cursor:pointer;
+}
+menu toggle div{
+width:23px;
+height:3px;
+background-color:white;
+margin:4px 0;
+}
+#menu-checkbox{
+display:none;
+}
+@media (max-width: 768px) {
+      .menu {
+        display: none;
+
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #333;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      .menu li {
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      #menu-checkbox:checked + .menu-toggle + .menu {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">mysite</div>
+<input type="checkbox" id="menu-checkbox" />
+<label for="menu-checkbox" class="menu-toggle">
+<div></div>
+<div></div>
+<div></div>
+</label>
+<ul class="menu">
+<li><a href="home.html">home</a></li>
+<li><a href="about us.html">about us</a></li>
+<li><a href="contact.html">contact</a></li>
+<li><a href="location.html">location</a></li>
+</ul>
+</nav>
+</body>
+</html>
