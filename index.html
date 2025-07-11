@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Creative Navbar</title>
   <style>
-    /* Base styles for colors, font, and layout */
     :root {
       --main-bg: #ffffff;
       --text-color: #111;
@@ -21,9 +21,13 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--main-bg);
       color: var(--text-color);
+      background-image: url('bg.jpg');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
-    /* Basic Navbar Styling */
     nav {
       background-color: var(--nav-bg);
       padding: 12px 20px;
@@ -33,18 +37,15 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box-shadow on sticky */
-      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* Logo styling */
     .logo {
       font-size: 1.6rem;
       font-weight: 700;
       color: var(--primary-color);
     }
 
-    /* Navbar menu styling */
     .menu {
       list-style: none;
       display: flex;
@@ -53,7 +54,6 @@
       padding: 0;
     }
 
-    /* Navbar item link styling */
     .menu li a {
       text-decoration: none;
       color: var(--text-color);
@@ -63,14 +63,12 @@
       transition: color 0.3s, transform 0.3s;
     }
 
-    /* Hover effects for menu links */
     .menu li a:hover {
       color: var(--primary-color);
       background-color: var(--hover-bg);
       transform: scale(1.05);
     }
 
-    /* Animated underline effect */
     .menu li a::after {
       content: "";
       position: absolute;
@@ -83,13 +81,11 @@
       transition: width 0.3s ease, transform 0.3s ease;
     }
 
-    /* On hover, underline expands */
     .menu li a:hover::after {
       width: 100%;
       transform: translateX(-50%) scaleX(1);
     }
 
-    /* Dropdown menu styling */
     .menu li ul {
       display: none;
       position: absolute;
@@ -101,16 +97,15 @@
       min-width: 160px;
       opacity: 0;
       transition: opacity 0.2s ease, transform 0.3s ease;
-      transform: translateY(-10px); /* Slide up effect */
+      transform: translateY(-10px);
     }
 
     .menu li:hover ul {
       display: block;
       opacity: 1;
-      transform: translateY(0); /* Slide down effect */
+      transform: translateY(0);
     }
 
-    /* Mobile Burger menu */
     #menu-check {
       display: none;
     }
@@ -118,6 +113,18 @@
     .burger {
       display: none;
       font-size: 28px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .right-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .dark-icon {
+      font-size: 24px;
       cursor: pointer;
     }
 
@@ -128,9 +135,10 @@
         background-color: var(--nav-bg);
         width: 100%;
         position: absolute;
-        top: 55px;
+        top: 60px;
         left: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 99;
       }
 
       #menu-check:checked ~ nav .menu {
@@ -143,15 +151,8 @@
       }
     }
 
-    /* Dark mode */
     #dark-switch {
       display: none;
-    }
-
-    /* Dark mode toggle styling */
-    .dark-icon {
-      font-size: 24px;
-      cursor: pointer;
     }
 
     #dark-switch:checked ~ nav {
@@ -162,32 +163,26 @@
     #dark-switch:checked ~ nav .menu li a {
       color: #f0f0f0;
     }
-
-    /* Parallax scrolling effect */
-    body {
-      background-image: url('bg.jpg');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
   </style>
 </head>
 <body>
 
   <!-- Dark Mode Switch -->
   <input type="checkbox" id="dark-switch">
-  
   <!-- Mobile Menu Toggle -->
   <input type="checkbox" id="menu-check">
-  
+
   <nav>
     <div class="logo">heyy!!</div>
-    
-    <!-- Burger Menu for Mobile -->
-    <label for="menu-check" class="burger">&#9776;</label>
-    
+
+    <div class="right-icons">
+      <!-- Burger for Mobile -->
+      <label for="menu-check" class="burger">&#9776;</label>
+
+      <!-- Dark mode icon -->
+      <label for="dark-switch" class="dark-icon">🌙</label>
+    </div>
+
     <ul class="menu">
       <li><a href="home.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
@@ -200,9 +195,6 @@
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    
-    <!-- Dark mode icon -->
-    <label for="dark-switch" class="dark-icon">🌙</label>
   </nav>
 
 </body>
