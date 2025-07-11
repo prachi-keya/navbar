@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creative Navbar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Navbar</title>
   <style>
     :root {
       --bg-light: #ffffff;
@@ -23,27 +23,40 @@
       background-image: url('bg.jpg');
       background-attachment: fixed;
       background-position: center;
-      background-repeat: no-repeat;
       background-size: cover;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     nav {
-      background-color: var(--nav-bg-light);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 20px;
+      background-color: var(--nav-bg-light);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: bold;
       color: var(--primary-color);
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .burger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-light);
     }
 
     .menu {
@@ -64,7 +77,6 @@
       padding: 8px 12px;
       font-size: 1rem;
       position: relative;
-      transition: color 0.3s;
     }
 
     .menu a::after {
@@ -102,50 +114,29 @@
       display: block;
     }
 
-    .menu li ul li {
-      padding: 0;
-    }
-
-    .menu li ul li a {
-      display: block;
-      padding: 8px 16px;
-      white-space: nowrap;
-    }
-
-    .burger {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: var(--text-light);
-    }
-
     .dark-icon {
       font-size: 22px;
-      margin-left: 12px;
       cursor: pointer;
       color: #fcbf49;
     }
 
-    /* Hidden inputs */
-    #menu-check, #dark-switch {
+    #menu-check,
+    #dark-switch {
       display: none;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .menu {
+        display: none;
         flex-direction: column;
+        background-color: var(--nav-bg-light);
+        width: 100%;
         position: absolute;
         top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: var(--nav-bg-light);
-        display: none;
+        right: 0;
       }
 
-      #menu-check:checked + label + .menu {
+      #menu-check:checked ~ nav .menu {
         display: flex;
       }
 
@@ -160,36 +151,36 @@
       color: var(--text-dark);
     }
 
-    #dark-switch:checked ~ nav .menu a,
-    #dark-switch:checked ~ nav .burger,
-    #dark-switch:checked ~ nav .dark-icon {
-      color: var(--text-dark);
-    }
-
+    #dark-switch:checked ~ nav .menu,
     #dark-switch:checked ~ nav .menu li ul {
       background-color: #1e1e1e;
     }
 
-    #dark-switch:checked ~ body {
-      background-color: var(--bg-dark);
+    #dark-switch:checked ~ nav .menu a,
+    #dark-switch:checked ~ nav .burger,
+    #dark-switch:checked ~ nav .dark-icon {
       color: var(--text-dark);
     }
   </style>
 </head>
 <body>
 
-  <!-- Dark mode switch -->
+  <!-- Dark Mode Toggle -->
   <input type="checkbox" id="dark-switch" />
-
-  <!-- Mobile menu toggle -->
+  <!-- Mobile Menu Toggle -->
   <input type="checkbox" id="menu-check" />
 
   <nav>
     <div class="logo">heyy!!</div>
 
-    <!-- Burger menu for mobile -->
-    <label for="menu-check" class="burger">&#9776;</label>
+    <div class="right-section">
+      <!-- Dark mode icon -->
+      <label for="dark-switch" class="dark-icon">🌙</label>
+      <!-- Hamburger for mobile -->
+      <label for="menu-check" class="burger">&#9776;</label>
+    </div>
 
+    <!-- Menu -->
     <ul class="menu">
       <li><a href="home.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
@@ -202,9 +193,6 @@
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-
-    <!-- Dark mode icon -->
-    <label for="dark-switch" class="dark-icon">🌙</label>
   </nav>
 
 </body>
